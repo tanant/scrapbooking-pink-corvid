@@ -1,0 +1,29 @@
+---
+---
+@import "minima";
+
+.local-preview-banner {
+  background: #c2185b;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 4px 0;
+}
+
+.notebook-banner {
+  background: #fff3cd;
+  border: 2px dashed #c2185b;
+  color: #6d1b3a;
+  text-align: center;
+  padding: 6px;
+  margin-bottom: 1.5em;
+}
+
+.notebook-note {
+  border-left: 6px dashed #c2185b;
+  padding-left: 1em;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 12px,
+    rgba(194, 24, 91, 0.04) 12px, rgba(194, 24, 91, 0.04) 24px);
+}

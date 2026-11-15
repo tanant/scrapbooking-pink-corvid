@@ -1,1 +1,3 @@
-Hello from notes.corvid.garden.
+---
+layout: home
+---

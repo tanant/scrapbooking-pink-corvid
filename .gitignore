@@ -1,0 +1,11 @@
+# Build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+
+# Local-only notebook: never published
+_notebook/
+notebook/
+_config.local.yml

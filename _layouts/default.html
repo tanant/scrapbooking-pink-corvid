@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- comment -%}
+    Copy of minima 2.5.2's default layout, plus the LOCAL PREVIEW banner.
+    site.local_preview is only set by the git-ignored _config.local.yml.
+  {%- endcomment -%}
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- if site.local_preview -%}
+    <div class="local-preview-banner">LOCAL PREVIEW</div>
+    {%- endif -%}
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>

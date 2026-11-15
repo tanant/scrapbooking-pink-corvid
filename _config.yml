@@ -1,0 +1,48 @@
+title: notes.corvid.garden
+description: A sheaf of notes.
+url: "https://notes.corvid.garden"
+baseurl: ""
+
+theme: minima
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Layouts for anything that doesn't name one. (The classic Pages build
+# did this implicitly; plain Jekyll doesn't.)
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+# minima 2.5 uses old Sass @import syntax; hide its deprecation noise and
+# don't publish a CSS source map.
+sass:
+  sourcemap: never
+  quiet_deps: true
+  silence_deprecations: [import, global-builtin]
+
+# Pages shown in the header nav (minima lists every page otherwise).
+header_pages:
+  - tags.md
+
+# Keep build tooling out of the published site.
+exclude:
+  - README.md
+  - Dockerfile
+  - compose.yaml
+  - Gemfile
+  - Gemfile.lock
+  - .ruby-version
+  - vendor/
+  - .jekyll-cache/
+  - .sass-cache/

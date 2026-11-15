@@ -1,0 +1,19 @@
+# Local preview: docker compose up --build
+# Then open http://<this-machine>:4000 from anywhere on the LAN.
+services:
+  preview:
+    build: .
+    image: scrapbooking-pink-corvid-preview
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /tmp
+    volumes:
+      - .:/site
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    command: >
+      bundle exec jekyll serve
+      --host 0.0.0.0
+      --livereload
+      --config _config.yml,_config.local.yml

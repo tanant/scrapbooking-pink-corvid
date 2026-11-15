@@ -1,0 +1,54 @@
+# Builds the site with Jekyll and publishes it to GitHub Pages.
+# Runs on every push to main, or by hand from the Actions tab.
+#
+# Repo setting this needs: Settings -> Pages -> Source: "GitHub Actions".
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Only one deploy at a time; a newer push waits rather than cancelling
+# a deploy that's halfway through.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read          # read the repo, nothing else
+    steps:
+      - uses: actions/checkout@v7
+
+      # Installs the Ruby in .ruby-version and the gems in Gemfile.lock,
+      # caching the gems between runs.
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      # Packages _site/ as the artifact the deploy job publishes.
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write            # publish to Pages
+      id-token: write         # prove to Pages that this run is from this repo
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
