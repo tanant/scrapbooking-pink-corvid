@@ -1,0 +1,29 @@
+# LOCAL ONLY (git-ignored). Layered on top of _config.yml by the preview container.
+local_preview: true
+
+collections:
+  notebook:
+    output: true
+    permalink: /notebook/:path/
+
+# This list replaces _config.yml's defaults, so repeat those here too.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: notebook
+    values:
+      layout: notebook
+
+header_pages:
+  - tags.md
+  - notebook/index.md

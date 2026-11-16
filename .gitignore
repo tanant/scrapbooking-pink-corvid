@@ -8,4 +8,3 @@ vendor/
 # Local-only notebook: never published
 _notebook/
 notebook/
-_config.local.yml
