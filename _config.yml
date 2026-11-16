@@ -4,7 +4,7 @@ url: "https://notes.corvid.garden"
 baseurl: ""
 
 theme: minima
-permalink: /:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title
 
 plugins:
   - jekyll-feed
@@ -34,6 +34,8 @@ sass:
 # Pages shown in the header nav (minima lists every page otherwise).
 header_pages:
   - tags.md
+  - apps.md
+  - privacy.md
 
 # Keep build tooling out of the published site.
 exclude:

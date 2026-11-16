@@ -4,7 +4,7 @@ local_preview: true
 collections:
   notebook:
     output: true
-    permalink: /notebook/:path/
+    permalink: /notebook/:path
 
 # This list replaces _config.yml's defaults, so repeat those here too.
 defaults:
@@ -26,4 +26,6 @@ defaults:
 
 header_pages:
   - tags.md
+  - apps.md
+  - privacy.md
   - notebook/index.md
